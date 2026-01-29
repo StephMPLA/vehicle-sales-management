@@ -1,3 +1,9 @@
 body {
-    background-color: skyblue;
+    background-color: white;
+}
+nav{
+    display:flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin: 2rem;
 }
