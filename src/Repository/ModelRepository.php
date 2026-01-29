@@ -40,4 +40,8 @@ class ModelRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+        public function findAll(): array
+        {
+            return parent::findAll();
+        }
 }

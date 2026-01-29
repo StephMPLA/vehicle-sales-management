@@ -1,0 +1,17 @@
+<article class="vehicle-card">
+
+  <div class="vehicle-image-placeholder">
+    <!-- image plus tard -->
+  </div>
+
+  <div class="vehicle-content">
+    <h3>{{ vehicle.marque.name }} {{ vehicle.name }}</h3>
+
+    <ul>
+      <li><strong>Category:</strong> {{ vehicle.categorie.name }}</li>
+      <li><strong>Fuel:</strong> {{ vehicle.carburant.name }}</li>
+      <li><strong>Price:</strong> €{{ vehicle.prix|number_format(0, '.', ' ') }}</li>
+    </ul>
+  </div>
+
+</article>
