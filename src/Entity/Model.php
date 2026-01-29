@@ -17,7 +17,7 @@ class Model
     #[ORM\JoinColumn(nullable: false)]
     private ?Categorie $Categorie = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Carburant $Carburant = null;
 
@@ -28,7 +28,11 @@ class Model
     private ?int $prix = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $weight = null;
+    private ?int $weight = null;
+
+    #[ORM\ManyToOne(inversedBy: 'models')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Marque $marque = null;
 
     public function getId(): ?int
     {
@@ -83,14 +87,26 @@ class Model
         return $this;
     }
 
-    public function getWeight(): ?string
+    public function getWeight():  ?int
     {
         return $this->weight;
     }
 
-    public function setWeight(string $weight): static
+    public function setWeight(int $weight): static
     {
         $this->weight = $weight;
+
+        return $this;
+    }
+
+    public function getMarque(): ?Marque
+    {
+        return $this->marque;
+    }
+
+    public function setMarque(?Marque $marque): static
+    {
+        $this->marque = $marque;
 
         return $this;
     }

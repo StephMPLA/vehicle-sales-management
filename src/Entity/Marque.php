@@ -19,14 +19,14 @@ class Marque
     private ?string $name = null;
 
     /**
-     * @var Collection<int, Categorie>
+     * @var Collection<int, Model>
      */
-    #[ORM\OneToMany(targetEntity: Categorie::class, mappedBy: 'Marque')]
-    private Collection $categories;
+    #[ORM\OneToMany(targetEntity: Model::class, mappedBy: 'marque')]
+    private Collection $models;
 
     public function __construct()
     {
-        $this->categories = new ArrayCollection();
+        $this->models = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,29 +47,29 @@ class Marque
     }
 
     /**
-     * @return Collection<int, Categorie>
+     * @return Collection<int, Model>
      */
-    public function getCategories(): Collection
+    public function getModels(): Collection
     {
-        return $this->categories;
+        return $this->models;
     }
 
-    public function addCategory(Categorie $category): static
+    public function addModel(Model $model): static
     {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-            $category->setMarque($this);
+        if (!$this->models->contains($model)) {
+            $this->models->add($model);
+            $model->setMarque($this);
         }
 
         return $this;
     }
 
-    public function removeCategory(Categorie $category): static
+    public function removeModel(Model $model): static
     {
-        if ($this->categories->removeElement($category)) {
+        if ($this->models->removeElement($model)) {
             // set the owning side to null (unless already changed)
-            if ($category->getMarque() === $this) {
-                $category->setMarque(null);
+            if ($model->getMarque() === $this) {
+                $model->setMarque(null);
             }
         }
 

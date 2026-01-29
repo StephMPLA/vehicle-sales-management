@@ -18,10 +18,6 @@ class Categorie
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'categories')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Marque $Marque = null;
-
     /**
      * @var Collection<int, Model>
      */
@@ -56,18 +52,6 @@ class Categorie
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getMarque(): ?Marque
-    {
-        return $this->Marque;
-    }
-
-    public function setMarque(?Marque $Marque): static
-    {
-        $this->Marque = $Marque;
 
         return $this;
     }
